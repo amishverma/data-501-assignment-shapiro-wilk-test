@@ -2,37 +2,37 @@
 title: "ASS-1-DATA-501"
 author: "Amish Verma"
 date: "2024-07-26"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 # Introduction
 
-The function developed in this assignment calculates the test statistic 𝑊,performs necessary input validation, and optionally generates a Q-Q plot to visually assess the normality of the data.
+The function developed in this assignment calculates the test statistic W,performs necessary input validation, and optionally generates a QQ plot to visually assess the normality of the data.
 
 # Methodology
 
-The Shapiro-Wilk test statistic \(W\) is calculated using the following formula:
+The Shapiro-Wilk test statistic (W) is calculated using the following formula:
 
-\[ 
-W = \frac{\left(\sum_{i=1}^n a_i x_{(i)}\right)^2}{\sum_{i=1}^n (x_i - \bar{x})^2} 
-\]
+\[ W = \frac{\left(\sum_{i=1}^n a_i x_{(i)}\right)^2}{\sum_{i=1}^n (x_i - \bar{x})^2} \]
 
 where:
 
-- \(x_{(i)}\) is the \(i\)-th order statistic (i.e., the \(i\)-th smallest value in the sample).
-- \(\bar{x}\) is the sample mean.
+- $(x_{(i)})$ is the $(i)$-th order statistic (i.e., the $(i)$th smallest value in the sample).
+- $(\bar{x})$ is the sample mean.
 
-The coefficients \(a_i\) are calculated using the vector \(m\) and the covariance matrix \(V\) of the order statistics.
+The coefficients $(a_{i})$ are calculated using the vector $m$ and the covariance matrix $(V)$ of the order statistics.
 
-## Implementaion
+# Implementaion
 
-The core function, shapiro_wilk_test, performs the following tasks:
+The core function, shapiro_Wilk_test, performs the following tasks:
 
 + Input Validation: Ensures the input data is numeric, contains no NA or infinite values, and has at least three values. It also checks that the optional qqplot argument is logical (TRUE or FALSE).
 
 + Weight Calculation: Computes the weights $a_{i}$ using the vector m and the covariance matrix V.
 
-+ Test Statistic Calculation: Calculates the Shapiro-Wilk test statistic W.
++ Test Statistic Calculation: Calculates the Shapiro-Wilk test statistic (W).
 
 + Q-Q Plot Generation (Optional): Generates a Q-Q plot if the qqplot argument is set to TRUE.
 
@@ -119,7 +119,7 @@ usethis::use_testthat()
 
 ```
 
-# Invalid Input testing
+## Invalid Input testing
 
 + Non-numeric data: Ensuring the function raises an error when the input data is not numeric.
 
@@ -147,7 +147,7 @@ expect_error(shapiro_wilk_test(c(2,3,4,5),"ad"), "Check the optional argument. B
 
 ```
 
-Valid Inputs Testing:
+## Valid Inputs Testing:
 
 + Normal data: Testing the function with a sample from a normal distribution.
 + Uniform data: Testing the function with a sample from a uniform distribution.
