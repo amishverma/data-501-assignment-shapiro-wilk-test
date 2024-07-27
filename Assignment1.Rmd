@@ -1,6 +1,6 @@
 ---
 title: "ASS-1-DATA-501"
-author: "Amish Verma"
+author: "Amish Verma 300598733"
 date: "2024-07-26"
 output:
   pdf_document: default
@@ -141,6 +141,8 @@ test_that("The function give valid erros for the inputs provided",
 {
 expect_error(shapiro_wilk_test(c("2","3","4","5")), "\n Data must be numeric")
 expect_error(shapiro_wilk_test(c(2,3,4,NA)), "\n Data contains NA values")
+expect_error(shapiro_wilk_test(c(2,3,4,Inf)), "\n Data contains infinite values")
+expect_error(shapiro_wilk_test(c(2,3)), "\n Data must contain at least 3 values")
 expect_error(shapiro_wilk_test(c(2,3,4,5),"ad"), "Check the optional argument. By default, it's FALSE and can be set to
          TRUE")
 })
