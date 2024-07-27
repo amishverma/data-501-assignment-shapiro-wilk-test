@@ -112,7 +112,7 @@ shapiro_wilk_test <- function(data, qqplot = FALSE) {
 
 # Testing part
 
-```{r}
+```{r,warning=FALSE}
 library(testthat)
 
 usethis::use_testthat()
@@ -190,3 +190,7 @@ W <- shapiro_wilk_test(test_data, qqplot = TRUE)
 print(W)
 ```
 
+
+# Github
+
+The code for this project, including the implementation and tests, is available at this [link](https://github.com/amishverma/data-501-assignment-shapiro-wilk-test)
