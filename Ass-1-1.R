@@ -3,7 +3,7 @@
 # My first comments
 
 # my function-1
-calculate_a <- function(n) {
+calculate_weights <- function(n) {
   
   # Compute the expected values of the order statistics
   m <- qnorm((1:n - 0.375) / (n + 0.25))
@@ -29,16 +29,16 @@ calculate_a <- function(n) {
 shapiro_wilk_test <- function(data, qqplot = FALSE) {
   # Input validation
   if (!is.numeric(data)) {
-    stop("Data must be numeric")
+    stop("\n Data must be numeric") # Added \n so that test passes! Weird stuff to catch
   }
   if (any(is.na(data))) {
-    stop("Data contains NA values")
+    stop("\n Data contains NA values")
   }
   if (any(is.infinite(data))) {
-    stop("Data contains infinite values")
+    stop("\n Data contains infinite values")
   }
   if (length(data) < 3) {
-    stop("Data must contain at least 3 values")
+    stop("\n Data must contain at least 3 values")
   }
   
   n <- length(data)
@@ -46,8 +46,12 @@ shapiro_wilk_test <- function(data, qqplot = FALSE) {
     stop("Sample size must be between 3 and 5000")
   }
   
+  if (!is.logical(qqplot)) {
+    stop("Check the optional argument. By default, it's FALSE and can be set to
+         TRUE")
+  }
   # Calculate weights
-  a <- calculate_a(n)
+  a <- calculate_weights(n)
   
   # Order the data
   sorted_data <- sort(data)
@@ -57,13 +61,13 @@ shapiro_wilk_test <- function(data, qqplot = FALSE) {
   
   # Calculate W
   W <- (sum(a * sorted_data)^2) / sum((sorted_data - x_bar)^2)
+  #cat("The value of W:",W)
   
   if (qqplot) {
     qqnorm(data)
     qqline(data, col = 2)
   }
-  
   return(W)
 }
 
-shapiro_wilk_test(c(2,3,4,NA))
+shapiro_wilk_test(c(2,3,4,32),TRUE)
