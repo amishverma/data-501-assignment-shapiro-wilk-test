@@ -79,7 +79,7 @@ shapiro_wilk_test <- function(data, qqplot = FALSE) {
     stop("\n Data must contain at least 3 values")
   }
   
-  n <- length(data)
+  
   if (n > 5000) {
     stop("Sample size must be between 3 and 5000")
   }
@@ -89,6 +89,7 @@ shapiro_wilk_test <- function(data, qqplot = FALSE) {
          TRUE")
   }
   # Calculate weights
+  n <- length(data)
   a <- calculate_a(n)
   
   # Order the data
@@ -193,4 +194,14 @@ print(W)
 
 # Github
 
-The code for this project, including the implementation and tests, is available at this [link](https://github.com/amishverma/data-501-assignment-shapiro-wilk-test)
+The code for this project, including the implementation and tests, is available at this [link](https://github.com/amishverma/data-501-assignment-shapiro-wilk-test).
+
+Please click on the "link" word to go to the Github page.
+
+## GIT BASH COMMANDS USE
+
+- git init
+- git status
+- git add
+- git commit -m "Message"
+- git push origin main

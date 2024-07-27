@@ -51,6 +51,7 @@ shapiro_wilk_test <- function(data, qqplot = FALSE) {
          TRUE")
   }
   # Calculate weights
+  n <- length(data)
   a <- calculate_weights(n)
   
   # Order the data
